@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body{
+            width: 100%;
+            height: 100vh;
+
+            background-color: #1a1a1a;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .btn{
+            display: block;
+            text-decoration: none;
+            text-transform: uppercase;
+
+            font-size: 11px;
+            font-weight: bold;
+            color: #fff;
+            
+            margin: 0 15px;     
+            padding: 10px 35px;
+            
+            overflow: hidden;
+
+            border: 2px solid #5fe36a;
+
+            position: relative;
+
+            &:before{
+                content: '';
+                position: absolute;            
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%); 
+
+                width: 100%;
+                height: 100%;
+
+                background-color: #5fe36a;
+
+                z-index: -1;
+
+                transition:  .7s ease;
+
+            }
+        }
+
+        .btn1{
+            &:before{
+                width: 0;
+                height: 100%;
+            }
+
+            &:hover{
+                &:before{
+                    width: 100%;
+                }
+            }
+        }
+
+        .btn2{
+            &:before{
+                width: 102%;
+                height: 0;
+            }
+
+            &:hover{
+                &:before{
+                    height: 110%;
+                }
+            }
+        }
+        .btn3{
+            &:before{
+                width: 110%;
+                height: 0;
+                transform: translate(-50%, -50%) rotate(45deg);
+            }
+
+            &:hover{
+                &:before{
+                    height: 350%;
+                }
+            }
+        }
+
+        .btn4{
+            &:before{
+                width: 110%;
+                height: 0;
+                transform: translate(-50%, -50%) rotate(-45deg);
+            }
+
+            &:hover{
+                &:before{
+                    height: 350%;
+                }
+            }
+        }
+
+        .btn5{
+            &:before{
+                width: 110%;
+                height: 0;
+                border-radius: 50%;
+                transform: translate(-50%, -50%) rotate(-45deg);
+            }
+
+            &:hover{
+                &:before{
+                    height: 350%;
+                }
+            }
+        }
+
+        .btn6{
+            &:before{
+                width: 110%;
+                height: 0;
+                border-radius: 50%;
+         
+            }
+
+            &:hover{
+                &:before{
+                    height: 350%;
+                }
+            }
+        }
+
+    </style>
+</head>
+<body>
+<a href="#" class="btn btn1">Escolha o plano</a>    
+<a href="#" class="btn btn2">Clique aqui</a>    
+<a href="#" class="btn btn3">Hover</a>    
+<a href="#" class="btn btn4">Hover</a>    
+<a href="#" class="btn btn5">Hover</a>    
+<a href="#" class="btn btn6">Hover</a>    
+</body>
+</html>

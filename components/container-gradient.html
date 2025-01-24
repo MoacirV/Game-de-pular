@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body{
+            background-color: #1a1a1a;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .card {
+            position: relative;
+            width: 300px;
+            height: 400px;
+            border-radius:20px ;
+            display: grid;
+            place-items: center;
+            overflow: hidden;
+        }
+
+        .card span{
+            position: absolute;   
+            inset: 5px;
+            border-radius: 16px;
+            background-color:#1e1e1e;
+            z-index: -1;
+        }
+
+        .card::before{
+            content: '';
+            position: absolute;
+            width: 500px;
+            height: 500px;
+            background-image: conic-gradient(transparent, transparent, transparent, #05daff);
+            animation: rotacionar 4s linear infinite;
+            animation-delay: -2s;
+        }
+
+        .card::after{
+            content: '';
+            position: absolute;
+            width: 500px;
+            height: 500px;
+            background-image: conic-gradient(transparent, transparent, transparent, #26ff52);
+            animation: rotacionar 4s linear infinite;
+        }
+
+        .tela{
+            background-color: #ffffff;
+        }
+
+        .card p{
+
+            width: 400px;
+            height: 500px;
+        
+            background-color: #ffffff;
+            color: white;
+        }
+
+        @keyframes rotacionar {
+            0% {
+                transform: rotate(0deg);
+            }100%{
+                transform: rotate(360deg);
+            }
+            
+        }
+
+    </style>
+</head>
+<body>
+    <div class="card">
+        <div id="tela">
+            <p>Bem Vindo!</p>
+        </div>
+    </div>
+</body>
+</html>
