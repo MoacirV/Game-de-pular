@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body{
+            background-color: #1a1a1a;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .container{
+            width: 60%;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+        }
+
+        .item{
+            transition: .35s;
+            cursor: pointer;
+            border-radius: 4px;
+            width: 150px;
+            height: 150px;
+            background-color: #c3c3c3;
+        }
+
+        .container:hover > :not(:hover){
+            opacity: .4;
+            transform: scale(.975);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+    </div>
+</body>
+</html>
