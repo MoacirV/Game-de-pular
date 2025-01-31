@@ -3,9 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Carrossel Dinâmico</title>
+    <title>Carrossel Infinito</title>
     <style>
-
         * {
             margin: 0;
             padding: 0;
@@ -24,21 +23,23 @@
             background-color: rgb(87, 49, 4);
             overflow: hidden;
             position: relative;
-            min-width: 400px;
+            width: 100%;
             margin: auto;
+            padding: 20px 0;
         }
 
         .items {
-            background-color: blueviolet;
             display: flex;
+            justify-content: space-between;
             transition: transform 0.5s ease-in-out;
-            gap: 20px;
+     
         }
 
         .items li {
             list-style: none;
-            flex: 0 0 100%;
+            flex: 0 0 calc(100% / 2);
             display: flex;
+            margin: 0 auto;
             flex-direction: column;
             align-items: center;
             justify-content: center;
@@ -46,159 +47,87 @@
         }
 
         .items img {
-            width: 100%;
-            height: 150px;
             width: 150px;
+            height: 150px;
             border-radius: 4px;
         }
 
         .nome, .description {
-            background-color: aqua;
             color: white;
-            margin-top: 10px;
-            font-size: 10px;
+            font-size: 12px;
         }
 
         .nome {
             font-weight: bold;
+            margin-bottom: 5px;
         }
 
         .description {
             font-weight: 100;
-        }
-
-        .navegacao {
-            background-color: blue;
-            display: flex;
-            justify-content: center;
-            margin-top: 10px;
-        }
-
-        input {
-            background-color: ;
-            display: none;
-        }
-
-        .navegacao label {
-            cursor: pointer;
-            margin: 5px;
-            height: 12px;
-            width: 12px;
-            border-radius: 50%;
-            border: solid 2px rgba(255, 255, 255, 0.466);
-            background: transparent;
-            transition: background 0.3s;
-        }
-
-        #radio1:checked ~ .items {
-            transform: translateX(0);
-        }
-
-        #radio2:checked ~ .items {
-            transform: translateX(calc(-100% - 20px));
-        }
-
-        #radio3:checked ~ .items {
-            transform: translateX(calc(-200% - 40px));
-        }
-
-        #radio4:checked ~ .items {
-            transform: translateX(calc(-300% - 60px));
-        }
-
-        #radio1:checked ~ .navegacao label[for="radio1"],
-        #radio2:checked ~ .navegacao label[for="radio2"],
-        #radio3:checked ~ .navegacao label[for="radio3"], 
-        #radio4:checked ~ .navegacao label[for="radio4"] {
-            background: rgb(0, 0, 0);
+            margin-bottom: 5px;
         }
 
         .arrow {
             position: absolute;
-            top: 35%;
-            transform: translateY(-35%);
-            background: rgba(253, 253, 253, 0);
-            border: transparent;
-            padding: 5px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255, 255, 255, 0);
+            border: none;
+            padding: 12px;
             cursor: pointer;
-            font-size: 2rem;
-            color: rgb(255, 255, 255);
+            font-size: 1.5rem;
+            color: white;
             border-radius: 50%;
+            z-index: 10;
         }
         
-        .prev {
-            left: 10px;
-        }
-
-        .next {
-            right: 10px;
-        }
+        .prev { left: 10px; }
+        .next { right: 10px; }
     </style>
 </head>
 <body>
 
     <div class="carousel">
-        <input type="radio" name="carousel" id="radio1" checked>
-        <input type="radio" name="carousel" id="radio2">
-        <input type="radio" name="carousel" id="radio3">
-        <input type="radio" name="carousel" id="radio4">
-
-        <ul class="items">
-            <li>
-                <div class="item">
-                    <p class="nome">Moacir Vieira</p>
-                    <img src="../assets/imgs/parceiros/maocirvieira.webp" alt="Moacir Vieira">
-                    <p class="description">Desenvolvedor Web</p>
-                </div>
-            </li>
-            <li>
-                <div class="item">
-                    <p class="nome">Marta Francisca</p>
-                    <img src="../assets/imgs/parceiros/martafrancisca.webp" alt="Marta Francisca">
-                    <p class="description">Personal Chef</p>
-                </div>
-            </li>
-            <li>
-                <div class="item">
-                    <p class="nome">Andressa</p>
-                    <img src="../assets/imgs/parceiros/nailsdesigner.webp" alt="Andressa">
-                    <p class="description">Nails Designer</p>
-                </div>
-            </li>
-            <li>
-                <div class="item">
-                    <p class="nome">Advocacia</p>
-                    <img src="../assets/imgs/parceiros/tipoAdvocacia.jpg" alt="Andressa">
-                    <p class="description">em breve</p>
-                </div>
-            </li>
-        </ul>
-
         <button class="arrow prev" onclick="prevSlide()">&#10094;</button>
+        <ul class="items">
+            <li><div class="item"><p class="nome">Moacir Vieira</p><img src="../assets/imgs/parceiros/maocirvieira.webp" alt="Moacir Vieira"><p class="description">Desenvolvedor Web</p></div></li>
+            <li><div class="item"><p class="nome">Marta Francisca</p><img src="../assets/imgs/parceiros/martafrancisca.webp" alt="Marta Francisca"><p class="description">Personal Chef</p></div></li>
+            <li><div class="item"><p class="nome">Andressa</p><img src="../assets/imgs/parceiros/nailsdesigner.webp" alt="Andressa"><p class="description">Nails Designer</p></div></li>
+            <li><div class="item"><p class="nome">Advocacia</p><img src="../assets/imgs/parceiros/tipoAdvocacia.jpg" alt="Advocacia"><p class="description">Em breve</p></div></li>
+            <li><div class="item"><p class="nome">Moacir Vieira</p><img src="../assets/imgs/parceiros/maocirvieira.webp" alt="Moacir Vieira"><p class="description">Desenvolvedor Web</p></div></li>
+            <li><div class="item"><p class="nome">Marta Francisca</p><img src="../assets/imgs/parceiros/martafrancisca.webp" alt="Marta Francisca"><p class="description">Personal Chef</p></div></li>
+            <li><div class="item"><p class="nome">Andressa</p><img src="../assets/imgs/parceiros/nailsdesigner.webp" alt="Andressa"><p class="description">Nails Designer</p></div></li>
+            <li><div class="item"><p class="nome">Advocacia</p><img src="../assets/imgs/parceiros/tipoAdvocacia.jpg" alt="Advocacia"><p class="description">Em breve</p></div></li>
+        </ul>
         <button class="arrow next" onclick="nextSlide()">&#10095;</button>
-
-        <div class="navegacao">
-            <label for="radio1"></label>
-            <label for="radio2"></label>
-            <label for="radio3"></label>
-            <label for="radio4"></label>
-        </div>
     </div>
 
     <script>
-        let currentIndex = 1;
-        const totalSlides = 4;
+        const items = document.querySelector('.items');
+        const itemWidth = document.querySelector('.items li').offsetWidth;
+        let currentIndex = 0;
+        const totalItems = items.children.length;
+
+        function updateCarousel() {
+            items.style.transition = 'transform 0.5s ease-in-out';
+            items.style.transform = `translateX(${-currentIndex * itemWidth}px)`;
+        }
 
         function nextSlide() {
-            currentIndex = currentIndex >= totalSlides ? 1 : currentIndex + 1;
-            document.getElementById(`radio${currentIndex}`).checked = true;
+            currentIndex++;
+            if (currentIndex > totalItems - 3) {
+                currentIndex = 0;
+            }
+            updateCarousel();
         }
 
         function prevSlide() {
-            currentIndex = currentIndex <= 1 ? totalSlides : currentIndex - 1;
-            document.getElementById(`radio${currentIndex}`).checked = true;
+            currentIndex--;
+            if (currentIndex < 0) {
+                currentIndex = totalItems - 3;
+            }
+            updateCarousel();
         }
     </script>
-
 </body>
 </html>

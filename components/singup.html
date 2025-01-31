@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="pt-Br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+        *{
+            margin: 0;
+            padding:0 ;
+            box-sizing: border-box;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        body{
+            background-color: #40A784;
+            background: linear-gradient(to-right, #05e69b, #077044);
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            height: 100vh;
+        }
+
+        .login-content{
+            display: flex;
+            width: 100%;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* .singup-box{
+            width: 95%;
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            align-items: center;
+        } */
+
+        .singup-container{
+            background-color: #fff;
+            border-radius: 30px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.35);
+            position: relative;
+            overflow: hidden;
+            width: 768px;
+            max-width: 100%;
+            min-height: 480px;
+        }
+
+        .singup-container p {
+            font-size: 14px;
+            line-height: 20px;
+            letter-spacing: 0.3px;
+            margin: 20px 0;
+        }
+
+        .singup-container span{
+            font-size: 12px;
+
+        }
+
+        .singup-container a{
+            color: #ccc;
+            text-decoration: none;
+            font-size: 13px;
+            margin: 15px 0 10px;
+
+        }
+
+        .singup-container button{
+            background-color: #035e26;
+            color: #fff;
+            font-size: 12px;
+            padding: 10px 45px;
+            border: 1px solid transaprent;
+            border-radius: 8px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            cursor: pointer;
+        }
+
+        .singup-container button.hidden{
+            background-color: transparent;
+            border-color: #fff;
+        }
+
+        .singup-container form{
+            background-color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            padding: 0 40px;
+            height: 100%;
+        }
+
+        .singup-container input{
+            background-color: #eee;
+            border: none;
+            margin: 8px 0;
+            padding: 10px 15px;
+            font-size: 13px;
+            border-radius: 8px;
+            width: 100%;
+            outline: none;
+        }
+
+        .form-container{
+      
+            position: absolute;
+            top: 0;
+            height: 100%;
+            transition: all 0.6s ease-in-out;
+        }
+
+        .sing-in{
+            left: 0;
+            width: 50%;
+            z-index: 2;
+        }
+
+        .container.active .sing-in{
+            transform: translateX(100%);
+        }
+
+        .sing-up{
+            left: 0;
+            width: 50%;
+            opacity: 0;
+            z-index: 1;
+        }
+
+        .container.active .sing-up{
+            transform: translateX(100%);
+            opacity: 1;
+            z-index: 5;
+            animation: move 0.6s;
+        }
+
+        @keyframes move {
+            0%, 49,99%{
+                opacity: 0;
+                z-index: 1;
+            }
+            50%, 100%{
+                opacity: 1;
+                z-index: 5;
+            }
+        }
+
+        .social-icons{
+            margin: 20px 0;
+        }
+
+        .social-icons a{
+            border: 1px solid #ccc;
+            border-radius: 20%;
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0 3px;
+            width: 40px;
+            height: 40px;
+        }
+
+        .toggle-container{
+            position: absolute;
+            top: 0;
+            left: 50%;
+            width: 50%;
+            height: 100%;
+            overflow: hidden;
+            transition: all 0.6s ease-in-out;
+            z-index: 1000;
+            border-radius: 150px 0 0 100px;
+        }
+
+        .container.active .toggle-container{
+            transform: translateX(-100%);
+        }
+
+        .toggle{
+            background-color: #035e26;
+            height: 100%;
+            background: linear-gradient(to-right, #05e69b, #077044);
+            color: #fff;
+            position: relative;
+            left: -100%;
+            height: 100%;
+            width: 200%;
+            transform: translateX(50%);
+            transition: all 0.6s ease-in-out;
+        }
+
+        .container.active .toggle{
+            transform: translateX(50%);
+        }
+
+        .toggle-panel{
+            position: absolute;
+            width: 50%;
+            height: 100%;
+        }
+
+        .toggle-panel{
+            position: absolute;
+            width: 50%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            padding: 0 30px;
+            text-align: center;
+            top: 0;
+            transform: translateX(0);
+            transition: all 0.6s ease-in-out;
+        }
+
+        .toggle-left{
+            transform: translateX(-200%);
+        }
+
+        .toggle-right{
+            right: 0;
+            transform: translateX(0);
+        }
+
+        .container.active .toggle-left{
+            transform: translateX(0);
+        }
+
+        .toggle-right{
+            right: 0;
+            transform: translateX(0);
+        }
+
+        .container.active .toggle-right{
+            transform: translateX(200%);
+        }
+
+    </style>
+</head>
+<body>
+    <div class="login-content">
+        <div class="singup-container">
+            <div class="form-container sing-up">
+                <form>
+                    <h1>Crie sua conta</h1>
+                    <div class="socail-icons">
+                        <a href=""><img src="" alt=""></a>
+                        <a href=""><img src="" alt=""></a>
+                        <a href=""><img src="" alt=""></a>
+                        <a href=""><img src="" alt=""></a>
+                    </div>
+                    <input type="text" placeholder="nome">
+                    <input type="text" placeholder="email">
+                    <input type="text" placeholder="senha">
+                    <input type="text" placeholder="confirmar senha">
+                    <input type="text" placeholder="telefone">
+                </form>
+            </div>
+            <div class="form-container sing-in">
+                <form>
+                    <h1>Login</h1>
+                    <div class="socail-icons">
+                        <a href="#"><img src="" alt=""></a>
+                        <a href="#"><img src="" alt=""></a>
+                        <a href="#"><img src="" alt=""></a>
+                        <a href="#"><img src="" alt=""></a>
+                    </div>
+                    <input type="text" placeholder="email">
+                    <input type="text" placeholder="senha">
+                    <a href="#">Esqueceu sua senha?</a>
+                    <button>Logar</button>
+        
+                </form>
+            </div>
+            <div class="toggle-container">
+                <div class="toggle">
+                    <div class="toggle-panel toggle-left">
+                        <h1>Bem vindo de volta!</h1>
+                        <p>Entre na sua conta e faça proveito de tudo que a Coram deo tem de bom para você</p>
+                        <button class="hidden" id="Login">Logar</button>
+                    </div>
+                </div>
+            </div>
+            <div class="toggle-container">
+                <div class="toggle">
+                    <div class="toggle-panel toggle-rigth">
+                        <h1>Olá, amigo! </h1>
+                        <p>Faça sua conta e aproveite de tudo que a Coram deo tem de bom para você</p>
+                        <button class="hidden" id="register">Cadastrar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        const registerBtn = document.getElementById('register');
+        const loginBtn = document.getElementById('login');
+        registerBtn.addEventListener('click', () =>{
+            singup-container.classList.add("active");
+        });
+        LoginBtn.addEventListener('click', () => {
+            singup-container.classList.remove("active");
+        });
+    </script>
+</body>
+</html>
